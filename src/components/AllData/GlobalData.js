@@ -16,13 +16,12 @@ function GlobalData({ countrySlug }) {
         const countryObj = response.data.Countries.filter((obj) => {
           return obj.Slug === countrySlug;
         });
-        console.log(countryObj);
         if (countrySlug && countrySlug !== "Global") {
           setCountryLatestData(countryObj);
         }
       })
       .catch((err) => {
-        console.error("[GlobalData.jsx]", err.message);
+        console.error("[GlobalData.js]", err.message);
       });
   }, [countrySlug]);
 
