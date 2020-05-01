@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import CountrySelector from "./components/Selectors/CountrySelector";
 import GlobalData from "./components/AllData/GlobalData";
-import "./App.module.css";
 
 function App() {
+  const [country, setCountry] = useState("");
+
+  function handleCountryChange(countrySlug) {
+    console.log(countrySlug);
+    setCountry(countrySlug);
+  }
+
   return (
-    <div className="App">
-      <CountrySelector />
-      <GlobalData />
+    <div>
+      <CountrySelector handleCountryChange={handleCountryChange} />
+      <GlobalData countrySlug={country} />
     </div>
   );
 }
