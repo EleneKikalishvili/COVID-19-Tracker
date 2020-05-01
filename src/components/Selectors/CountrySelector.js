@@ -24,7 +24,7 @@ function CountrySelector({ handleCountryChange }) {
   });
 
   return (
-    <div className="tc ma5 ">
+    <div className="tc mt5 ">
       <select
         defaultValue=""
         onChange={(e) => handleCountryChange(e.target.value)}
@@ -32,6 +32,10 @@ function CountrySelector({ handleCountryChange }) {
         <option value="Global">Global</option>
         {countries}
       </select>
+      <p className="mid-gray tc mt4">For detailed data choose country</p>
+      <p className="mid-gray tc">
+        Some countries may not have detailed information
+      </p>
     </div>
   );
 }
