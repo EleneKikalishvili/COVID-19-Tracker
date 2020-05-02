@@ -27,20 +27,18 @@ function GlobalData({ countrySlug }) {
       });
   }, [countrySlug]);
 
-  let content = null;
-
   return (
     <div className="tc">
-      {loading
-        ? (content = <h1>Loading...</h1>)
-        : (content = (
-            <Card
-              selected={countrySlug}
-              date={date}
-              GlobalData={GlobalData}
-              CountryLatestData={CountryLatestData}
-            />
-          ))}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Card
+          selected={countrySlug}
+          date={date}
+          GlobalData={GlobalData}
+          CountryLatestData={CountryLatestData}
+        />
+      )}
     </div>
   );
 }
