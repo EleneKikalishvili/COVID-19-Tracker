@@ -18,7 +18,7 @@ function CountryData({ countrySlug }) {
         .catch((err) => {
           console.error("[CountryData.js]", err.message);
         });
-  }, [countrySlug]);
+  }, [count, countrySlug]);
 
   let content = null;
   if (CountryData && countrySlug !== "Global") {
