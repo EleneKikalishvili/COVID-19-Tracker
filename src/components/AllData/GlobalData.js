@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../Cards/Card";
 
 function GlobalData({ countrySlug }) {
+  const [loading, setLoading] = useState(true);
   const [GlobalData, setGlobalData] = useState([]);
   const [CountryLatestData, setCountryLatestData] = useState(null);
   const [date, setCurrentDate] = useState("");
@@ -16,6 +17,7 @@ function GlobalData({ countrySlug }) {
         const countryObj = response.data.Countries.filter((obj) => {
           return obj.Slug === countrySlug;
         });
+        setLoading(false);
         if (countrySlug && countrySlug !== "Global") {
           setCountryLatestData(countryObj);
         }
@@ -25,14 +27,20 @@ function GlobalData({ countrySlug }) {
       });
   }, [countrySlug]);
 
+  let content = null;
+
   return (
-    <div>
-      <Card
-        selected={countrySlug}
-        date={date}
-        GlobalData={GlobalData}
-        CountryLatestData={CountryLatestData}
-      />
+    <div className="tc">
+      {loading
+        ? (content = <h1>Loading...</h1>)
+        : (content = (
+            <Card
+              selected={countrySlug}
+              date={date}
+              GlobalData={GlobalData}
+              CountryLatestData={CountryLatestData}
+            />
+          ))}
     </div>
   );
 }
